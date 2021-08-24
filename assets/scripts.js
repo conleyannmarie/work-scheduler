@@ -27,5 +27,17 @@ $(document).ready(function() {
             id: id,
             text: text
         }
+                //update the old data
+                oldData.push(dataEntry);
+                //overwrite the local storage
+                localStorage.setItem("data",JSON.stringify(oldData));
+            });
+        
+            var data = JSON.parse(localStorage.getItem("data")) || [];
+            data.forEach(function(datum) {
+                var query = `[hour='${datum.id}']`;
+                $(query).find(".description").val(datum.text);
+            });
+           
 
 });
