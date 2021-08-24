@@ -15,6 +15,17 @@ $(document).ready(function() {
         }
     });
 
-    
-   
+    $(".saveBtn").on("click", function(event) {
+        //get the old data
+        var oldData = JSON.parse(localStorage.getItem("data")) || [];
+        //ge the hour id
+        var id = $(event.target).closest(".time-block").attr("hour");
+        //get the text
+        var text = $(event.target).closest(".time-block").find(".description").val();
+        //make data entry
+        var dataEntry = {
+            id: id,
+            text: text
+        }
+
 });
